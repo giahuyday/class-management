@@ -68,7 +68,7 @@ function updateStudentController(req, res) {
 
 function deleteStudentController(req, res) {
     try {
-        const studentId = req.params.id;
+        const studentId = req.body?.id;
         const deleted = studentServices.deleteStudent(studentId);
 
         return res.status(200).json(deleted);

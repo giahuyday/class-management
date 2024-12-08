@@ -69,10 +69,10 @@ const getStudentByClassName = (courseName) => {
 const updateStudent = (id, studentData) => {
     try {
         const students = util.readData();
-        const studentIdx = students['classes'].findIndex((student) => student.id == Number(id));
+        const studentIdx = students['students'].findIndex((student) => student.id == Number(id));
 
-        if (studentIdx !== 1) {
-            students['student'][studentIdx] = { ...students['student'][studentIdx], ...studentData };
+        if (studentIdx !== -1) {
+            students['students'][studentIdx] = { ...students['students'][studentIdx], ...studentData };
             util.writeData(students);
 
             return students['students'][studentIdx];

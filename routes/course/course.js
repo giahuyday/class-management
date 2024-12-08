@@ -8,6 +8,6 @@ router.post('/api/create', courseController.createCourseController);
 router.get('/api/get_courses', courseController.getAllCourseController);
 router.get('/api/get_course/:id', courseController.getCourseByIdController);
 router.post('/api/update/:id', courseController.updateCourseByIdController);
-router.post('/api/delete/:id', courseController.deleteCourseByIdController);
+router.post('/api/delete', courseController.deleteCourseByIdController);
 
 module.exports = router;

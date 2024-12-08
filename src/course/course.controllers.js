@@ -53,7 +53,7 @@ function updateCourseByIdController(req, res) {
 
 function deleteCourseByIdController(req, res) {
     try {
-        const id = req.params.id;
+        const id = req.body?.id;
         const deleted = courseServices.deleteCourse(id);
 
         if (deleted) {
