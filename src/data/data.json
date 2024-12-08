@@ -1,0 +1,36 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "Nguyen Van A",
+            "email": "nguyenvana@example.com",
+            "classId": 1
+        },
+        {
+            "id": 2,
+            "name": "Tran Thi B",
+            "email": "tranthib@example.com",
+            "classId": 1
+        },
+        {
+            "id": 3,
+            "name": "Le Van C",
+            "email": "levanc@example.com",
+            "classId": 1
+        }
+    ],
+    "classes": [
+        {
+            "id": 1,
+            "name": "Computer Science 101"
+        },
+        {
+            "id": 2,
+            "name": "Mathematics 102"
+        },
+        {
+            "id": 3,
+            "name": "OOP"
+        }
+    ]
+}
