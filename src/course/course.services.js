@@ -5,7 +5,7 @@ const createCourse = (courseData) => {
         const courses = util.readData()
         const coursesLen = courses['courses'].length - 1
 
-        // get id of last element +1 to ensure that next id is increments in case some courses was deleted
+        // get id of last element +1 to ensure that next id is increase in case some courses was deleted
         const newId = courses['courses'][coursesLen].id + 1
         const newCourse = {
             id: newId,
@@ -22,8 +22,10 @@ const createCourse = (courseData) => {
     }
 };
 
-const getCourse = () => {
-    const course = util.readData()['courses']
+const getCourses = () => {
+    const courses = util.readData()['courses']
+
+    return courses
 };
 
 const getCourseById = (courseId) => {
@@ -85,7 +87,7 @@ const deleteCourse = (courseId) => {
 
 module.exports = {
     createCourse,
-    getCourse,
+    getCourses,
     getCourseById,
     updateCourse,
     deleteCourse,

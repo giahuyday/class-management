@@ -19,9 +19,9 @@ function createCourseController(req, res) {
 
 function getAllCourseController(req, res) {
     try {
-        const newCourse = courseServices.createCourse()
+        const courses = courseServices.getCourses()
 
-        return res.status(200).json(newCourse)
+        return res.status(200).json(courses)
     } catch (error) {
         console.log(error)
     }
