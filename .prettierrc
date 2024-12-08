@@ -4,7 +4,7 @@
     "singleQuote": true,
     "trailingComma": "all",
     "semi": true,
-    "arrowParens": "avoid",
+    "arrowParens": "always",
     "proseWrap": "never",
     "endOfLine": "lf"
 }
