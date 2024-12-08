@@ -19,7 +19,7 @@
       "classId": 2
     }
   ],
-  "courses": [
+  "classes": [
     {
       "id": 1,
       "name": "Computer Science 101"
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "name": "OOP"
+      "name": "Smart Contract 1"
     },
     {
       "id": 4,
