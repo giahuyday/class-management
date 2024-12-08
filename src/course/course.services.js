@@ -1,87 +1,86 @@
-const util = require('../utils/utils')
+const util = require('../utils/utils');
 
 const createCourse = (courseData) => {
     try {
-        const courses = util.readData()
-        const coursesLen = courses['courses'].length - 1
+        const courses = util.readData();
+        const coursesLen = courses['classes'].length - 1;
 
         // get id of last element +1 to ensure that next id is increase in case some courses was deleted
-        const newId = courses['courses'][coursesLen].id + 1
+        const newId = courses['classes'][coursesLen].id + 1;
         const newCourse = {
             id: newId,
-            name: courseData?.name
-        }
+            name: courseData?.name,
+        };
 
-        courses['courses'].push(newCourse);
-        util.writeData(courses);  // Lưu dữ liệu vào file JSON
-        idx = courses['courses'].length - 1
+        courses['classes'].push(newCourse);
+        util.writeData(courses); // Lưu dữ liệu vào file JSON
+        idx = courses['classes'].length - 1;
 
-        return courses['courses'][idx]
+        return courses['classes'][idx];
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
 const getCourses = () => {
-    const courses = util.readData()['courses']
+    const courses = util.readData()['classes'];
 
-    return courses
+    return courses;
 };
 
 const getCourseById = (courseId) => {
     try {
-        const courses = util.readData()['courses']
-        const course = courses.filter(course => course.id == courseId)
+        const courses = util.readData()['classes'];
+        const course = courses.filter((course) => course.id == courseId);
 
         if (course.length > 0) {
-            return course
-        }
-        else {
-            return { "status": "NOT FOUND" }
+            return course;
+        } else {
+            return { status: 'NOT FOUND' };
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
 const updateCourse = (id, courseData) => {
     try {
-        const courses = util.readData()
-        const courseIdx = courses['courses'].findIndex(course => course.id === Number(id));
+        const courses = util.readData();
+        const courseIdx = courses['classes'].findIndex((course) => course.id === Number(id));
 
         if (courseIdx !== -1) {
-            courses['courses'][courseIdx] = { ...courses['courses'][courseIdx], ...courseData }
-            util.writeData(courses)
+            courses['classes'][courseIdx] = { ...courses['classes'][courseIdx], ...courseData };
+            util.writeData(courses);
 
-            return courses.courses[courseIdx]
+            return courses['classes'][courseIdx];
         } else {
-            return { "Status": "NOT FOUND" }
+            return { status: 'NOT FOUND CLASS TO UPDATE' };
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
 const deleteCourse = (courseId) => {
     try {
-        const courses = util.readData()
-        const courseIdx = courses['courses'].findIndex(course => course.id === Number(courseId))
-        const checkEnrolledStudent = util.checkEnrolledStudents(courses['students'], Number(courseId))
+        const courses = util.readData();
+        const courseIdx = courses['classes'].findIndex((course) => course.id === Number(courseId));
+        const checkEnrolledStudent = util.checkEnrolledStudents(courses['students'], Number(courseId));
 
         if (courseIdx !== -1) {
             if (!checkEnrolledStudent) {
-                courses['courses'].splice(courseIdx, 1)
-                util.writeData(courses)
+                courses['classes'].splice(courseIdx, 1);
+                util.writeData(courses);
 
-                return { "message": "Course is deleted" }
+                return { message: 'Course is deleted' };
             } else {
-                return { "message": "Exists student in class" }
+                return { message: 'Exists student in course' };
             }
         }
 
-        return { "message": "Courses is deleted" }
+        return { message: 'Courses is deleted' };
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 

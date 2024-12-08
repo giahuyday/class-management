@@ -1,70 +1,66 @@
-const courseServices = require('./course.services')
-
+const courseServices = require('./course.services');
 
 function createCourseController(req, res) {
     try {
-        const newCourse = courseServices.createCourse(req.body)
+        const newCourse = courseServices.createCourse(req.body);
 
         if (newCourse) {
-            return res.status(200).json(newCourse)
+            return res.status(200).json(newCourse);
+        } else {
+            return res.status(500).json('Create course fail');
         }
-        else {
-            return res.status(500).json("Create course fail")
-        }
-
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 
 function getAllCourseController(req, res) {
     try {
-        const courses = courseServices.getCourses()
+        const courses = courseServices.getCourses();
 
-        return res.status(200).json(courses)
+        return res.status(200).json(courses);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
 function getCourseByIdController(req, res) {
     try {
-        const id = req.params.id
-        const course = courseServices.getCourseById(id)
+        const id = req.params.id;
+        const course = courseServices.getCourseById(id);
         if (course) {
-            res.status(200).json(course)
+            res.status(200).json(course);
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
 function updateCourseByIdController(req, res) {
     try {
-        const id = req.params.id
-        const course = courseServices.updateCourse(id, req.body)
+        const id = req.params.id;
+        const course = courseServices.updateCourse(id, req.body);
 
         if (course) {
-            res.status(200).json(course)
-        }
-        else {
-            res.status(500).json({ "status": "SERVER ERROR" })
+            res.status(200).json(course);
+        } else {
+            res.status(500).json({ status: 'SERVER ERROR' });
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
 function deleteCourseByIdController(req, res) {
     try {
-        const id = req.params.id
-        const deleted = courseServices.deleteCourse(id)
+        const id = req.params.id;
+        const deleted = courseServices.deleteCourse(id);
 
         if (deleted) {
-            res.status(200).json(deleted)
+            res.status(200).json(deleted);
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
@@ -74,4 +70,4 @@ module.exports = {
     getCourseByIdController,
     updateCourseByIdController,
     deleteCourseByIdController,
-}
+};
