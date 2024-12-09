@@ -24,7 +24,7 @@ const checkCourseExist = (coursesArr, courseId) => {
 
 // Check if classname existed or not
 const checkCourseName = (courseArr, courseName) => {
-    const courseIdx = courseArr.findIndex((course) => course.name === courseName);
+    const courseIdx = courseArr.findIndex((course) => course.name == courseName);
 
     if (courseIdx !== -1) {
         return true;
