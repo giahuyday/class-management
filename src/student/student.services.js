@@ -71,13 +71,13 @@ const updateStudent = (id, studentData) => {
         const students = util.readData();
         const studentIdx = students['students'].findIndex((student) => student.id == Number(id));
 
-        if (studentIdx !== -1) {
+        if (studentIdx !== -1 && !util.checkStudentName(students['students'], studentData?.name)) {
             students['students'][studentIdx] = { ...students['students'][studentIdx], ...studentData };
             util.writeData(students);
 
             return students['students'][studentIdx];
         }
-        return { status: 'NOT FOUND STUDENT TO UPDATE' };
+        return { status: 'Student Name is existed or cannot update' };
     } catch (error) {
         console.log(error);
     }

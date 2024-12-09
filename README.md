@@ -47,6 +47,18 @@ npm i
 npm start
 ```
 
+-   Build `Dockerfile`
+
+```sh
+docker build -t imageName .
+```
+
+-   Run image
+
+```sh
+docker run --name containerName -p 3001:3001 imageName
+```
+
 ## APIs
 
 | API Chính            | Task                                                      | API                             |

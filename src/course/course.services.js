@@ -48,13 +48,13 @@ const updateCourse = (id, courseData) => {
         const courses = util.readData();
         const courseIdx = courses['classes'].findIndex((course) => course.id === Number(id));
 
-        if (courseIdx !== -1) {
+        if (courseIdx !== -1 && !util.checkCourseName(courses['classes'], courseData?.name)) {
             courses['classes'][courseIdx] = { ...courses['classes'][courseIdx], ...courseData };
             util.writeData(courses);
 
             return courses['classes'][courseIdx];
         } else {
-            return { status: 'NOT FOUND CLASS TO UPDATE' };
+            return { status: 'Class name is existed or cannot update' };
         }
     } catch (error) {
         console.log(error);
