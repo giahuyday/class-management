@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-app.use('/course', courseRoute);
+// Use course instead of class because I have some trouble when defined class variable
+app.use('/class', courseRoute);
 app.use('/student', studentRoute);
 
 app.listen(PORT, (req, res) => {
